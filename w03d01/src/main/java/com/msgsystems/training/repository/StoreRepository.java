@@ -27,10 +27,9 @@ public class StoreRepository {
     ArrayList<Store> storeList = new ArrayList<>();
     ProductService productService=new ProductService();
 
-    public void displayStores() {
+    public ArrayList<Store> getStoresFromFile() {
 
         productList=productService.getListOfProducts();
-
 
         try (FileReader fileReader = new FileReader("stores.csv");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -55,11 +54,16 @@ public class StoreRepository {
             ex.printStackTrace();
         }
 
+       return storeList;
+
+    }
+
+    public void displayStores()
+    {
         //Print the list of stores
         System.out.println("List of stores: ");
+        storeList=getStoresFromFile();
         storeList.forEach(System.out::println);
-
-
     }
 
     public void filterStoresToDisplay() {
