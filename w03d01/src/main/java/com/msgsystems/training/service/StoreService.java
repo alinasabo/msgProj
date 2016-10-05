@@ -4,6 +4,8 @@ package com.msgsystems.training.service;
 import com.msgsystems.training.model.Product;
 import com.msgsystems.training.model.Store;
 import com.msgsystems.training.repository.StoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,20 +21,21 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
+@Service
 public class StoreService {
 
     private final StoreRepository storeRepository;
 
+    @Autowired
     public StoreService(final StoreRepository storeRepository){
 
         this.storeRepository=storeRepository;
     }
 
 
-    public void displayStores()
+    public List<Store> displayStores()
     {
-        storeRepository.displayStores();
+      return   storeRepository.displayStores();
     }
 
 }

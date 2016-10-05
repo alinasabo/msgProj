@@ -1,41 +1,35 @@
 package com.msgsystems.training.Controller;
 
 import com.msgsystems.training.model.Product;
-import com.msgsystems.training.service.ProductService;
+import com.msgsystems.training.model.Store;
+import com.msgsystems.training.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.ScannedGenericBeanDefinition;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
 
-@Lazy
 @Controller
-public class ProductController {
+public class StoreController {
 
+    private final StoreService storeService;
 
-
-    private final ProductService productService;
-    @Autowired
-    public ProductController(final ProductService productService) {
-        this.productService = productService;
+   @Autowired
+   public StoreController(final StoreService storeService){
+        this.storeService=storeService;
     }
 
     @RequestMapping(
             method = RequestMethod.GET,
-            path = "/products",
+            path = "/stores",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE
     )
     public @ResponseBody
-    List<Product> getProducts() {
+    List<Store> getStores() {
 
-        return productService.getListOfProducts();
+        return storeService.displayStores();
     }
 }

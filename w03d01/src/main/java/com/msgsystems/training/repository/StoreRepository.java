@@ -3,6 +3,7 @@ package com.msgsystems.training.repository;
 import com.msgsystems.training.model.Product;
 import com.msgsystems.training.model.Store;
 import com.msgsystems.training.service.ProductService;
+import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+@Repository
 public class StoreRepository {
 
     String[] str;
@@ -28,7 +29,7 @@ public class StoreRepository {
 
         productList=productService.getListOfProducts();
 
-        try (FileReader fileReader = new FileReader("stores.csv");
+        try (FileReader fileReader = new FileReader("C:\\Users\\saboa\\Desktop\\stores.csv");
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             while (Optional.ofNullable(line = bufferedReader.readLine()).isPresent()) {
@@ -53,12 +54,12 @@ public class StoreRepository {
        return storeList;
     }
 
-    public void displayStores()
+    public List<Store> displayStores()
     {
-        //Print the list of stores
-        System.out.println("List of stores: ");
+
         storeList=getStoresFromFile();
-        storeList.forEach(System.out::println);
+      //  storeList.forEach(System.out::println);
+        return storeList;
     }
 
     public void filterStoresToDisplay() {
