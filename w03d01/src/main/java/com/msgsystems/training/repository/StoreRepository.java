@@ -8,14 +8,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 
 
 public class StoreRepository {
@@ -53,9 +50,7 @@ public class StoreRepository {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
        return storeList;
-
     }
 
     public void displayStores()

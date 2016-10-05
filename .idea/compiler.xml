@@ -26,8 +26,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="training" target="1.8" />
-      <module name="w03d01" target="1.8" />
+      <module name="training" target="1.5" />
+      <module name="w03d01" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
